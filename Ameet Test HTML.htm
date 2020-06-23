@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ameet Page</title>
+
+	<!-- some of the styles in basic.css are overriden below in head -->
+	<link href="css/basic.css" type="text/css" rel="stylesheet" />
+
+	<script type="text/javascript" src="js/demo.js"> </script> 
+
+<!-- Declare google fonts family. Go to fonts.google.com to get more -->
+
+<!-- Links to google Sriracha family and Roboto family font -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto&family=Sriracha&display=swap" rel="stylesheet">
+
+
+<!-- Declare default header and body fonts using google fonts -->
+    <style>
+   
+    	/* Sets the default charactericts for the page */
+		body {
+  			color: orange; /* default text font color */
+  			font-size: 16px;
+  			font-family: cursive; /* I think cursive is a built in font as it is the backup for Sriracha below */
+		}
+
+
+		/* set characterists for all p and h1 tags, overrides default above in "body" */
+    	p {
+
+    		font-family: 'Roboto', serif;
+    		font-weight: 400;
+    		font-size: 16px;	
+			color: #323AA8; /* blue color */
+
+    	} 
+
+		h1 {
+
+    		font-family: 'Sriracha', cursive;
+    		font-weight: 400;
+    		font-size: 40px;	
+    		font-style: oblique; /* makes letters lean right a bit */
+			color: #FFFFFF; 
+
+    	}     	
+
+
+    </style>
+
+	
+</head>
+
+<body>
+
+	<!-- <h1 style="font-family: Sriracha; font-size: 40px; color: #FFFFFF;">This is a Header in 40px Sriracha Font</h1> -->
+	<h1>This is a Header in 40px Sriracha Font</h1>
+	<p>This is body text in another stylized google font</p>
+
+	<p id="ptag1">Data Output</p>
+
+	<p id="ptag2">Data Output</p>
+	<p id="ptag3">Data Output</p>
+	<p id="ptag4">Data Output</p>
+
+
+	<canvas id="myCanvas" onmouseover="startCanvas(this)" onmouseout="clearCanvas(this)" width="200" height="100" style="border:1px solid #000000;"></canvas>
+
+	<!-- canvas javascript code-->
+	<script>
+	
+	function startCanvas(canvas) {
+		
+		// var canvas = document.getElementById("myCanvas");
+		// getContext() is a built-in HTML object, with properties and methods for drawing
+
+		var ctx = canvas.getContext("2d");
+		ctx.fillStyle = "#FF0000"; // red color
+		// fill rectangle with red color and start at origin (0,0) and make wide px by height px
+		ctx.fillRect(0, 0, 100, 75);
+
+		// draw a line with starting point moveTo and ending point lineTo
+		ctx.moveTo(0, 0);
+		ctx.lineTo(200, 100);
+		ctx.stroke();
+
+		// draw a circle with input arc(x,y,r,startangle,endangle). x,y is center and r radius 
+		ctx.beginPath();
+		ctx.arc(95, 50, 40, 0, 2 * Math.PI);
+		ctx.stroke();
+
+	}
+
+	function clearCanvas(canvas) {
+		
+		// var canvas = document.getElementById("myCanvas");
+		// getContext() is a built-in HTML object, with properties and methods for drawing
+		var ctx = canvas.getContext("2d");
+		ctx.clearRect(0,0,200,100);
+		
+	}
+
+	</script>
+
+	<br>
+	<br>
+
+<!-- this shows a plain text box -->
+	<input type="text" id="firsttextbox" placeholder="please enter a word" name="box" />
+
+<!-- this displays a submit button next to the text box created above, with the text "Go" on it -->
+	<input type="submit" name="box1" value="Go" onclick="strClick()"/> 
+
+
+	<script>
+	
+	function strClick() {
+
+	// this is the user entered string above
+	var str = document.getElementById("firsttextbox").value;
+	var strLen = str.length;
+
+	// split will put each character or word in array cell based on supplied delimiter
+	// var strArray = str.split("");
+	// window.alert(strArray[2]);
+
+
+	var reverseStr = str;
+
+	// in order to use reverse() you first convert string to array using split
+	reverseStr = str.split("");
+	reverseStr.reverse();
+	// join converts an array into a string with a delimeter
+	finalStr = reverseStr.join('');
+	window.alert(finalStr);
+	
+
+	}	
+
+	</script>
+
+
+	<script >
+
+	// sends alert dialog box	
+	// window.alert("Hello McFly");
+	// send similar alert using console
+	// console.log("Hello McFly");
+
+	// returns number of iFrames in the browser which will be zero this point because iFrames are created below
+	var numFrame = window.length;
+	// returns values in pixels
+	var ih = window.innerHeight;
+	var iw = window.innerWidth;
+	var oh = window.OuterHeight;
+	var ow = window.OuterWidth;
+	var aa = window.screen.width;
+	var bb = window.screen.height;
+
+	//window.alert("iHeight =" + ih);
+	//window.alert("iWidth  =" + iw);
+	//window.alert("oHeight =" + oh);
+
+	document.getElementById("ptag1").innerHTML = "Screen Data= " + bb;
+
+	</script>
+
+	<!-- Continously display the current time in a box in the upper right corner -->
+	<p class="timebox" id="timebox" >This is a timebox</p> 
+
+
+	<!-- VIDEO display. The phrase "This brower..." only appears when browser doesn't support this tag 
+	for some reason this will not play a youtube video 
+	<video width = "500" height = "300" controls autoplay="off">
+         <source src = "https://www.youtube.com/embed/otCpCn0l4Wo">
+         This browser doesn't support video tag.
+	</video>
+	<iframe width = "500" height = "300" 
+         src = "https://www.youtube.com/embed/otCpCn0l4Wo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+	</iframe>
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/2ULzeWIlamA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/otCpCn0l4Wo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	-->
+
+
+	<!-- unordered list -->
+	<ul>
+  		<li><a>Home</a></li>
+  		<li><a>News</a></li>
+  		<li><a>Contact</a></li>
+  		<li><a>About</a></li>
+	</ul>
+
+
+	<table><tr><td width="160">
+	<!-- iFrame is used to display video or something from the Internet -->
+	<iframe name="tides" src="http://www.hawaiitides.com/Waikiki/WaikikiTides.asp" width="160" height="275" frameborder="0" scrolling="no">
+	<ilayer src="http://www.hawaiitides.com/Waikiki/WaikikiTides.asp">
+	Get Today's Hawaii Tides<a href="http://www.hawaiitides.com/Waikiki/WaikikiTides.asp">here</a>.</p>
+	</ilayer>
+	</iframe></td></tr></table>
+
+
+
+	<h1> Hello World! </h1>
+	<p id="para"> first web page. </p>
+
+
+	<!-- This paragaph has an inline CSS styling which puts a 1 pixel thick box around it -->
+	<p style="border: 1px solid orange"> Inline Styled Paragraph</p>
+
+	<p class="page"> This text is treated specially in CSS because it is in class .page</p>
+
+	<script>
+		//var userChoice = prompt("what is your name?");
+		//document.write("Your name is "+userChoice+String.fromCharCode(10));
+		//alert("This is an output dialog box");
+		//var userBoolean = confirm("Do you like Pizza?");
+		//document.write("You answered "+userBoolean+" to the last question");
+
+	</script>
+
+
+	<!-- Add two newlines -->
+	<br /><br />
+
+	<textarea name="textarea" rows="10" cols="50">Write something here</textarea>
+
+
+	<button type="button" onclick="buttonClick()"> Click </button>
+	<!-- An empty item that is filled by Javascript (buttonClick()) to write to document. Alternate to document.write -->
+	<p id="pitem"> </p>
+
+	<!-- handles an event based on a mouse over -->
+	<div onmouseover="mOver(this)" onmouseout="mOut(this)"
+	style="background-color:#D94A38;width:120px;height:40px;padding:40px;">
+	Mouse Over Me and See the Time</div>
+
+	<br /><br />
+	<!-- Event handling -->
+	<div id="junk" onmouseover="junkCall()">Talk to me</div>
+
+	<!-- calls JS when a key is pressed -->
+	<input type="text" id="press "onkeypress="keyPressFunc()" />
+
+	<input type="checkbox" name="checkit" id="check" value="What is this?" checked="checked" />
+
+	<ol>
+		<li>num1</li>
+		<li>num2</li>
+	</ol>
+
+	<strike>password</strike>
+
+	<input type="password" name="pass" id="pass" size="20" maxlength="30" />
+
+	<select name="test" id="test">Value
+		<optgroup label="Grp1">
+			<option value="Val#1" selected="selected"></option>
+		</optgroup>
+		
+	</select>
+
+	<!-- Website Footer. See CSS changes as well -->
+	<footer>Copyright @ Dhillon Productions</footer>
+
+
+</body>
+
+</html>
+
+
+
+<!-- <p><a href="http://cnn.com"> click here</a> to read the news.</p> -->
